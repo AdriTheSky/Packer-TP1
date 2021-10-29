@@ -8,7 +8,7 @@ source "qemu" "example" {
   accelerator       = "kvm"
   http_directory    = "./ks"
   ssh_username      = "root"
-  ssh_password      = "%Serveur44"
+  ssh_password      = "azerty123"
   ssh_timeout       = "20m"
   vm_name           = "tdhtest"
   memory            = "2048"
