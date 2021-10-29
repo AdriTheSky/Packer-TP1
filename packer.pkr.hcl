@@ -8,7 +8,7 @@ source "qemu" "example" {
   accelerator       = "kvm"
   http_directory    = "./ks"
   ssh_username      = "root"
-  ssh_password      = "azerty123"
+  ssh_password      = "%Server44"
   ssh_timeout       = "20m"
   vm_name           = "tdhtest"
   memory            = "2048"
@@ -24,4 +24,14 @@ source "qemu" "example" {
 
 build {  
   sources = ["source.qemu.example"]
+
+	provisioner "shell" {
+		
+		inline = [
+		"dnf install git -y",
+		"git clone https://github.com/BastienBalaud/golang-myip.git",
+		"cd golang-myip",
+		"make -f Makefile.mk",
+		]
+	}
 }
