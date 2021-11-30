@@ -43,7 +43,7 @@
         cp ../golangip.service /etc/systemd/system/
         systemctl enable golangip
         systemctl start golangip
-     - name: Add SSH key
+    - name: Add SSH key
        shell: |
         echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILjIRqNf3oVs8vbAcoNHzXMxlS5fL6qqFxfdi221S9p6" >> /root/.ssh/authorized_keys
         echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAmM7WeoXFKZGnDLV8RA3jfeYKPIYzTNIe3Yqr7Z11BV" >> /root/.ssh/authorized_keys
