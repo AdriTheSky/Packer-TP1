@@ -32,7 +32,7 @@
           Description=Golang-myIP
           [Service]
           Type=simple
-          ExecStart=/root/golang-myip/build/server.x86_64
+          ExecStart=/root/golang-myip/build/server.x86_64 --port 80
           Restart=always
           [Install]
           WantedBy=multi-user.target
