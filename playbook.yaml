@@ -9,5 +9,14 @@
         
     - name : 1. Install dépendence pour GO
       shell : dnf groupinstall -y "Development Tools"
-    - name : 2. Install dépendence pour GO
-      shell : dnf groupinstall -y "Development Tools"
+    - name : 2. Install GOLANG
+      shell : dnf install wget |
+        dnf install tar
+        wget https://dl.google.com/go/go1.13.1.linux-amd64.tar.gz |
+        tar -zxvf go1.13.1.linux-amd64.tar.gz -C /usr/local |
+        echo 'export GOROOT=/usr/local/go' | tee -a /etc/profile |
+        echo 'export PATH=$PATH:/usr/local/go/bin' | tee -a /etc/profile
+
+    - name : 3. Start Go project
+      shell : cd /golang-myip |
+      go run server.go
