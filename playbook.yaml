@@ -1,0 +1,23 @@
+---
+- hosts: all
+	tasks:
+
+	-name : 1. Installation de git
+	dnf : 
+	 name: git 
+	 state: latest
+	
+	-name : 2. Clone Golang-myip
+	git :
+	 repo: https://github.com/BastienBalaud/golang-myip.git
+	 dest: /home/root/
+	 clone: yes
+	 update: yes	
+
+	-name : 3. Installation Makefile
+	make:
+	 chdir: home/root/golang-myip
+	 target: all
+	 become: yes
+	 restart: yes
+
