@@ -2,15 +2,15 @@
 - hosts: all
   become: yes
   tasks:
-    - name: Install package GIT
+    - name: 1. Install package GIT
       package:
         name: git
         state: latest
         
-    - name: 1. Install DEP for GO
+    - name: 2. Install DEP for GO
       shell : dnf groupinstall -y "Development Tools"
       
-    - name: 2. Install GO
+    - name: 3. Install GO
       shell: |
         dnf install wget
         dnf install tar
@@ -19,13 +19,13 @@
         echo 'export GOROOT=/usr/local/go' | tee -a /etc/profile
         echo 'export PATH=$PATH:/usr/local/go/bin' | tee -a /etc/profile
 
-    - name: 3. Start Go project
+    - name: 4. Start Go project
       shell: |
         cd /golang-myip
         make
         go run server.go
         
-    - name: 4. Create golang-myip service
+    - name: 5. Create golang-myip service
       file:
         path: "./golanip.service"
         state: touch
@@ -41,10 +41,10 @@
           [Install]
           WantedBy=multi-user.target
           
-    - name: 5. Desable SELinux
+    - name: 6. Desable SELinux
       shell: setenforce 0
       
-    - name : 6. Enable golang-myip
+    - name: 7. Enable golang-myip
       shell: |
         cp golangip.service /etc/systemd/system/
         systemctl enable golangip
