@@ -11,18 +11,41 @@
       shell : dnf groupinstall -y "Development Tools"
       
     - name : 2. Install GOLANG
-      shell : dnf install wget |
+      shell : |
+        dnf install wget
         dnf install tar
-        wget https://dl.google.com/go/go1.13.1.linux-amd64.tar.gz |
-        tar -zxvf go1.13.1.linux-amd64.tar.gz -C /usr/local |
-        echo 'export GOROOT=/usr/local/go' | tee -a /etc/profile |
+        wget https://dl.google.com/go/go1.13.1.linux-amd64.tar.gz
+        tar -zxvf go1.13.1.linux-amd64.tar.gz -C /usr/local
+        echo 'export GOROOT=/usr/local/go' | tee -a /etc/profile
         echo 'export PATH=$PATH:/usr/local/go/bin' | tee -a /etc/profile
 
     - name : 3. Start Go project
-      shell : cd /golang-myip |
-        make |
+      shell : |
+        cd /golang-myip
+        make
         go run server.go
-
-    - name : 4. Start Go project
-      shell : cd /golang-myip |
-      go run server.go
+        
+    - name : 4. Creat golang-myip service
+      file:
+        path: "./golanip.service"
+        state: touch
+      copy:
+        dest: "./golanip.service"
+        content: |
+          [Unit]
+          Description=Golang-myIP
+          [Service]
+          Type=simple
+          ExecStart=/root/golang-myip/build/server.x86_64
+          Restart=always
+          [Install]
+          WantedBy=multi-user.target
+          
+    - name: 5. Desable SELinux
+      shell: setenforce 0
+      
+    - name : 6. Enable golang-myip
+      shell: |
+        cp golangip.service /etc/systemd/system/
+        systemctl enable golangip
+        systemctl start golangip
