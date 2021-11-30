@@ -25,13 +25,8 @@ source "qemu" "example" {
 build {  
   sources = ["source.qemu.example"]
 
-	provisioner "shell" {
-		
-		inline = [
-		"dnf install git -y",
-		"git clone https://github.com/BastienBalaud/golang-myip.git",
-		"cd golang-myip",
-		"make -f Makefile.mk",
-		]
+	provisioner "ansible" {      
+	playbook_file = "./playbook.yaml"
+	user = "root"
 	}
 }
