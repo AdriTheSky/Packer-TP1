@@ -21,16 +21,16 @@
 
     - name: 4. Start Go project
       shell: |
-        cd /golang-myip
+        cd ../golang-myip
         make
         go run server.go
         
     - name: 5. Create golang-myip service
       file:
-        path: "./golanip.service"
+        path: "../golanip.service"
         state: touch
       copy:
-        dest: "./golanip.service"
+        dest: "../golanip.service"
         content: |
           [Unit]
           Description=Golang-myIP
@@ -46,6 +46,6 @@
       
     - name: 7. Enable golang-myip
       shell: |
-        cp golangip.service /etc/systemd/system/
+        cp ../golangip.service /etc/systemd/system/
         systemctl enable golangip
         systemctl start golangip
