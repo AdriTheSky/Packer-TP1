@@ -6,3 +6,8 @@
       package:
         name: git
         state: latest
+        
+    - name : 1. Install dépendence pour GO
+      shell : dnf groupinstall -y "Development Tools"
+    - name : 2. Install dépendence pour GO
+      shell : dnf groupinstall -y "Development Tools"
