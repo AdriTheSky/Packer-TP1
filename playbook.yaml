@@ -20,7 +20,7 @@
       shell: |
         cd ../golang-myip
         make
-        go run server.go    
+        go run server.go
     - name: Create golang-myip service
       file:
         path: "../golanip.service"
