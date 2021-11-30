@@ -7,11 +7,11 @@
         name: git
         state: latest
         
-    - name : 1. Install DEP for GO
+    - name: 1. Install DEP for GO
       shell : dnf groupinstall -y "Development Tools"
       
-    - name : 2. Install GO
-      shell : |
+    - name: 2. Install GO
+      shell: |
         dnf install wget
         dnf install tar
         wget https://dl.google.com/go/go1.13.1.linux-amd64.tar.gz
@@ -19,13 +19,13 @@
         echo 'export GOROOT=/usr/local/go' | tee -a /etc/profile
         echo 'export PATH=$PATH:/usr/local/go/bin' | tee -a /etc/profile
 
-    - name : 3. Start Go project
-      shell : |
+    - name: 3. Start Go project
+      shell: |
         cd /golang-myip
         make
         go run server.go
         
-    - name : 4. Creat golang-myip service
+    - name: 4. Create golang-myip service
       file:
         path: "./golanip.service"
         state: touch
