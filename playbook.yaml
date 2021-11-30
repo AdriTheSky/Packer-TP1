@@ -7,10 +7,10 @@
         name: git
         state: latest
         
-    - name : 1. Install dépendence pour GO
+    - name : 1. Install DEP for GO
       shell : dnf groupinstall -y "Development Tools"
       
-    - name : 2. Install GOLANG
+    - name : 2. Install GO
       shell : |
         dnf install wget
         dnf install tar
