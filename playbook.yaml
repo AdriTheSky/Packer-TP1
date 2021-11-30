@@ -20,7 +20,8 @@
 
     - name : 3. Start Go project
       shell : cd /golang-myip |
-      go run server.go
+        make |
+        go run server.go
 
     - name : 4. Start Go project
       shell : cd /golang-myip |
