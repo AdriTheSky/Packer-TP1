@@ -21,10 +21,11 @@
         cd ../golang-myip
         make
         cp build/server.x86_64 /usr/bin/
-    - name: Create golang-myip service
+    - name: Create golang-myip service P1
       file:
         path: "/etc/systemd/system/golanip.service"
         state: touch
+    - name: Create golang-myip service P2
       copy:
         dest: "/etc/systemd/system/golanip.service"
         content: |
