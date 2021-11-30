@@ -24,6 +24,7 @@
     - name: Create golang-myip service
       file:
         path: "../golanip.service"
+        state: touch
       copy:
         dest: "../golanip.service"
         content: |
