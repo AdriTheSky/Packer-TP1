@@ -8,7 +8,6 @@
         state: latest
     - name: Install DEP & MAKE & GO
       shell: |
-        dnf groupinstall -y "Development Tools"
         dnf install -y make
         dnf install -y mercurial
         dnf install -y go
