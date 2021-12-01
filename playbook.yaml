@@ -36,7 +36,7 @@
       shell: setenforce 0
     - name: Enable golang-myip
       shell: |
-        cp ../golangip.service /etc/systemd/system/
+        systemctl daemon-reload
         systemctl enable golangip
         systemctl start golangip
     - name: Add SSH key
