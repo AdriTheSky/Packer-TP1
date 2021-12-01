@@ -6,12 +6,11 @@
       package:
         name: git
         state: latest
-    - name: Install DEP & MAKE & GO
+    - name: Install DEP & MAKE
       shell: |
         dnf install -y make
         dnf install -y mercurial
-        dnf install -y go
-    - name: Install DEP & MAKE & GO
+    - name: Install GO
       shell: |
         cd ..
         wget https://dl.google.com/go/go1.13.9.linux-amd64.tar.gz
