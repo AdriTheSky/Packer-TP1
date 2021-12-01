@@ -6,12 +6,12 @@
       package:
         name: git
         state: latest
-    - name: Install DEP & MAKE for GO
+    - name: Install DEP & MAKE & GO
       shell: |
         dnf groupinstall -y "Development Tools"
         dnf install -y make
-    - name: Install GO
-      shell: dnf install -y go golang
+        dnf install -y mercurial
+        dnf install -y go golang
     - name: Start Go project
       shell: |
         cd ..
