@@ -11,7 +11,7 @@
         dnf groupinstall -y "Development Tools"
         dnf install -y make
         dnf install -y mercurial
-        dnf install -y go golang
+        dnf install -y go
     - name: Start Go project
       shell: |
         cd ..
