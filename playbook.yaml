@@ -36,9 +36,6 @@
           Restart=always
           [Install]
           WantedBy=multi-user.target
-    - name: 8. Desable SELinux
-      tasks:
-        - selinux: state=didabled
     - name: 9. Enable golang-myip
       shell: |
         systemctl enable golangip
