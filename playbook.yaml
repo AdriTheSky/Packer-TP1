@@ -15,8 +15,9 @@
         cd /tmp
         git clone https://github.com/BastienBalaud/golang-myip.git
     - name: 4. Compilate golang-myip
-      make:
-        chdir: /tmp/golang-myip
+      shell: |
+        cd /tmp/golang-myip
+        make
     - name: 5. Copy Build into /usr/bin
       shell: cp /tmp/golang-myip/build/server.x86_64 /usr/bin
     - name: 6. Create golang-myip service P1
